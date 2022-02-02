@@ -59,30 +59,11 @@ def interface():
                 proxy.http_proxy = proxy_ip_port
                 proxy.ssl_proxy = proxy_ip_port
                 options = webdriver.ChromeOptions()
-                options.add_argument('--no-sandbox')
-                options.add_argument('--start-maximized')
-                #options.add_argument('--start-fullscreen')
-                options.add_argument('--single-process')
-                options.add_argument('--disable-dev-shm-usage')
-                options.add_argument("--incognito")
-                options.add_argument('--disable-blínk-features-AutomationControlled')
-                options.add_argument('--disable-blink-features=AutomationControlled')
-                options.add_experimental_option('useAutomationExtension', False)
-                options.add_experimental_option("excludeSwitches", ["enable-automation"])
-                options.add_argument("disable-infobars")
-                #options.add_argument('--user-data-dir=C:\\Users\\Public\\python\\lbc\\selenium')
-                options.page_load_strategy='normal'
-                capabilities = webdriver.DesiredCapabilities.CHROME
+                
                 proxy.add_to_capabilities(capabilities)
                 EMAIL,PASSWORD,city=(line.strip().split(':'))
                 driver = webdriver.Chrome(desired_capabilities=capabilities,options=options)
-                driver.execute_script("Object.defineProperty(navigator, 'webdriver', {get: () => undefined})")
-                driver.execute_cdp_cmd("Page.addScriptToEvaluateOnNewDocument", {
-                        "source":
-                            "const newProto = navigator._proto_;"
-                            "delete newProto.webdriver;"
-                            "navigator._proto_ = newProto;" 
-                    })
+                
                 
                 
 
